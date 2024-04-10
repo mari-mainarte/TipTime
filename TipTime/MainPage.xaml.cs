@@ -28,13 +28,21 @@
             tipValue = Math.Floor(tipValue);
             double totalAmount = tipValue + amountValue;
 
-            TotalLabel.Text = totalAmount.ToString();
-            TipLabel.Text = tipValue.ToString();
+            TotalLabel.Text = "R$" + totalAmount.ToString();
+            TipLabel.Text = "R$" + tipValue.ToString();
         }
 
         private void RoundUpButton_Clicked(object sender, EventArgs e)
         {
+            double amountValue = Convert.ToDouble(ValueEntry.Text);
+            double tipPercentage = TipPercentageSlider.Value / 100;
+            double tipValue = amountValue * tipPercentage;
 
+            tipValue = Math.Ceiling(tipValue);
+            double totalAmount = tipValue + amountValue;
+
+            TotalLabel.Text = "R$" + totalAmount.ToString();
+            TipLabel.Text = "R$" + tipValue.ToString();
         }
 
         private void OnTipPercentageSlider_ValueChanged(object sender, ValueChangedEventArgs e)
